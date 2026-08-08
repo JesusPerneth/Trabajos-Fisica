@@ -1,1 +1,147 @@
+print(" ---- CONVERSOR DE UNIDADES ---- ")
 
+print("\nSeleccione el tipo de unidad:")
+print("1. Longitud")
+print("2. Masa")
+print("3. Tiempo")
+print("4. Salir")
+
+opcion = int(input("\nIngrese una opción: "))
+
+if opcion == 1:
+    print("\n--- CONVERSIÓN DE LONGITUD ---")
+    print("Escala de conversión:")
+    print("1 km = 1000 m")
+    print("1 m = 100 cm")
+    print("1 cm = 10 mm")
+
+    print("\nUnidades disponibles:")
+    print("1. Kilómetros (km)")
+    print("2. Metros (m)")
+    print("3. Centímetros (cm)")
+    print("4. Milímetros (mm)")
+
+    unidad = int(input("\nSeleccione el numero de la unidad de origen: "))
+    cantidad = float(input("Ingrese la cantidad: "))
+
+    if unidad == 1:
+        print("\nResultado:")
+        print(cantidad, "km =", cantidad * 1000, "m")
+        print(cantidad, "km =", cantidad * 100000, "cm")
+        print(cantidad, "km =", cantidad * 1000000, "mm")
+
+    elif unidad == 2:
+        print("\nResultado:")
+        print(cantidad, "m =", cantidad / 1000, "km")
+        print(cantidad, "m =", cantidad * 100, "cm")
+        print(cantidad, "m =", cantidad * 1000, "mm")
+
+    elif unidad == 3:
+        print("\nResultado:")
+        print(cantidad, "cm =", cantidad / 100000, "km")
+        print(cantidad, "cm =", cantidad / 100, "m")
+        print(cantidad, "cm =", cantidad * 10, "mm")
+
+    elif unidad == 4:
+        print("\nResultado:")
+        print(cantidad, "mm =", cantidad / 1000000, "km")
+        print(cantidad, "mm =", cantidad / 1000, "m")
+        print(cantidad, "mm =", cantidad / 10, "cm")
+
+    else:
+        print("Unidad no válida.")
+
+
+elif opcion == 2:
+    print("\n--- CONVERSIÓN DE MASA ---")
+    print("Escala de conversión:")
+    print("1 tonelada = 1000 kg")
+    print("1 kg = 1000 g")
+    print("1 g = 1000 mg")
+
+    print("\nUnidades disponibles:")
+    print("1. Toneladas (t)")
+    print("2. Kilogramos (kg)")
+    print("3. Gramos (g)")
+    print("4. Miligramos (mg)")
+
+    unidad = int(input("\nSeleccione el numero de la unidad de origen: "))
+    cantidad = float(input("Ingrese la cantidad: "))
+
+    if unidad == 1:
+        print("\nResultado:")
+        print(cantidad, "t =", cantidad * 1000, "kg")
+        print(cantidad, "t =", cantidad * 1000000, "g")
+        print(cantidad, "t =", cantidad * 1000000000, "mg")
+
+    elif unidad == 2:
+        print("\nResultado:")
+        print(cantidad, "kg =", cantidad / 1000, "t")
+        print(cantidad, "kg =", cantidad * 1000, "g")
+        print(cantidad, "kg =", cantidad * 1000000, "mg")
+
+    elif unidad == 3:
+        print("\nResultado:")
+        print(cantidad, "g =", cantidad / 1000000, "t")
+        print(cantidad, "g =", cantidad / 1000, "kg")
+        print(cantidad, "g =", cantidad * 1000, "mg")
+
+    elif unidad == 4:
+        print("\nResultado:")
+        print(cantidad, "mg =", cantidad / 1000000000, "t")
+        print(cantidad, "mg =", cantidad / 1000000, "kg")
+        print(cantidad, "mg =", cantidad / 1000, "g")
+
+    else:
+        print("Unidad no válida.")
+
+
+elif opcion == 3:
+    print("\n--- CONVERSIÓN DE TIEMPO ---")
+    print("Escala de conversión:")
+    print("1 día = 24 horas")
+    print("1 hora = 60 minutos")
+    print("1 minuto = 60 segundos")
+
+    print("\nUnidades disponibles:")
+    print("1. Días")
+    print("2. Horas")
+    print("3. Minutos")
+    print("4. Segundos")
+
+    unidad = int(input("\nSeleccione el numero de la unidad de origen: "))
+    cantidad = float(input("Ingrese la cantidad: "))
+
+    if unidad == 1:
+        print("\nResultado:")
+        print(cantidad, "días =", cantidad * 24, "horas")
+        print(cantidad, "días =", cantidad * 1440, "minutos")
+        print(cantidad, "días =", cantidad * 86400, "segundos")
+
+    elif unidad == 2:
+        print("\nResultado:")
+        print(cantidad, "horas =", cantidad / 24, "días")
+        print(cantidad, "horas =", cantidad * 60, "minutos")
+        print(cantidad, "horas =", cantidad * 3600, "segundos")
+
+    elif unidad == 3:
+        print("\nResultado:")
+        print(cantidad, "minutos =", cantidad / 1440, "días")
+        print(cantidad, "minutos =", cantidad / 60, "horas")
+        print(cantidad, "minutos =", cantidad * 60, "segundos")
+
+    elif unidad == 4:
+        print("\nResultado:")
+        print(cantidad, "segundos =", cantidad / 86400, "días")
+        print(cantidad, "segundos =", cantidad / 3600, "horas")
+        print(cantidad, "segundos =", cantidad / 60, "minutos")
+
+    else:
+        print("Unidad no válida.")
+
+
+elif opcion == 4:
+    print("\nPrograma finalizado.")
+
+else:
+    print("\nOpción no válida.")
