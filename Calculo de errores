@@ -1,1 +1,113 @@
+import math
+import pandas as pd
 
+print("==========================================")
+print("       PROGRAMA DE CÁLCULO DE ERRORES")
+print("==========================================")
+
+print("\nSeleccione cómo desea ingresar los datos:")
+print("1. Ingresar datos manualmente")
+print("2. Cargar datos desde Excel")
+
+opcion = input("\nDigite una opción (1 o 2): ")
+
+if opcion == "1":
+
+    entrada = input("\nIngrese los datos separados por comas: ")
+
+    try:
+        datos = [float(x.strip()) for x in entrada.split(",")]
+    except ValueError:
+        print("Error: debe ingresar únicamente números.")
+        exit()
+
+
+
+elif opcion == "2":
+
+    archivo = input("\nIngrese el nombre del archivo Excel: ")
+
+    try:
+        tabla = pd.read_excel(archivo)
+
+        print("\nColumnas encontradas en el archivo:")
+        for i, columna in enumerate(tabla.columns):
+            print(f"{i + 1}. {columna}")
+
+        numero_columna = int(
+            input("\nSeleccione el número de la columna que contiene los datos: ")
+        )
+
+        columna_seleccionada = tabla.columns[numero_columna - 1]
+
+        datos = pd.to_numeric(
+            tabla[columna_seleccionada],
+            errors="coerce"
+        ).dropna().tolist()
+
+        if len(datos) == 0:
+            print("Error: no se encontraron datos numéricos.")
+            exit()
+
+        print(f"\nSe cargaron {len(datos)} datos correctamente.")
+
+    except FileNotFoundError:
+        print("Error: no se encontró el archivo.")
+        exit()
+
+    except Exception as e:
+        print("Error al leer el archivo:", e)
+        exit()
+
+else:
+    print("Opción no válida.")
+    exit()
+
+
+
+unidad = input(
+    "\nIngrese la unidad de los datos "
+    "(m, cm, kg, s, °C, etc.): "
+)
+
+
+
+promedio = sum(datos) / len(datos)
+
+
+suma = 0
+
+for dato in datos:
+    suma += (dato - promedio) ** 2
+
+desviacion = math.sqrt(suma / len(datos))
+
+
+error_absoluto = desviacion
+
+
+
+if promedio != 0:
+    error_relativo = error_absoluto / abs(promedio)
+else:
+    error_relativo = 0
+
+
+
+error_porcentual = error_relativo * 100
+
+
+
+print("\n==========================================")
+print("              RESULTADOS")
+print("==========================================")
+
+print(f"Cantidad de datos: {len(datos)}")
+print(f"Datos utilizados: {datos}")
+print(f"Valor promedio: {promedio:.4f} {unidad}")
+print(f"Desviación estándar: {desviacion:.4f} {unidad}")
+print(f"Error absoluto: ±{error_absoluto:.4f} {unidad}")
+print(f"Error relativo: {error_relativo:.6f}")
+print(f"Error porcentual: {error_porcentual:.2f}%")
+
+print("==========================================")
